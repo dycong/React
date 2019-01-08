@@ -18,26 +18,27 @@
     1. 显示h2标题, 初始文本为: 你喜欢我
     2. 点击标题更新为: 我喜欢你
   */
-
   class Like extends React.Component {
+
     constructor(props) {
-      super(props);
+      super(props)
       this.state = {
-        isLikeMe: false
+        isLikeMe: true
       }
     }
 
-    handleLike = () => {
+    // this执行为undefined，修改为箭头函数后指向组件对象
+    handleClick = () => {
       const isLikeMe = !this.state.isLikeMe;
       this.setState({
         isLikeMe
       })
-    };
+    }
 
     render() {
       const isLikeMe = this.state.isLikeMe;
       const text = isLikeMe ? 'I Love You' : 'You Love Me';
-      return <h2 onClick={this.handleLike}>{text}</h2>
+      return <h2 onClick={this.handleClick}>{text}</h2>
     }
   }
 

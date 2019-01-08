@@ -23,16 +23,19 @@
   */
   class Person extends React.Component {
     constructor(props){
-      super(props);
+      super(props)
     }
 
     render() {
+      // 结构赋值
       const {name,age,sex} = this.props;
-      return (<ul>
-        <li>姓名：{name}</li>
-        <li>年龄：{age}</li>
-        <li>性别：{sex}</li>
-      </ul>)
+      return (
+        <ul>
+          <li>姓名；{name}</li>
+          <li>年龄：{age}</li>
+          <li>性别：{sex}</li>
+        </ul>
+      )
     }
   }
 
@@ -42,25 +45,24 @@
     sex:PropTypes.string
   }
 
-  Person.defaultProps  = {
-    age:18,
+  Person.defaultProps = {
+    age:100,
     sex:'女'
   }
 
   const p1 = {
-    name:'Tom',
-    age:18,
-    sex:'男'
+    name: 'ding',
+    sex: '男'
   }
 
-  ReactDOM.render(<Person name={p1.name} age={p1.age} sex={p1.sex}/>,document.getElementById('example1'));
-  
-  const p2 ={
-    name:'jack',
-
+  const p2 = {
+    name: 'cong',
+    age: 20,
   }
 
-  ReactDOM.render(<Person {...p2}/>,document.getElementById('example2'))
+
+  ReactDOM.render(<Person name={p1.name} age={p1.age} sex={p1.sex}/>, document.getElementById('example1'))
+  ReactDOM.render(<Person {...p2}/>, document.getElementById('example2'))
 
 </script>
 </body>
