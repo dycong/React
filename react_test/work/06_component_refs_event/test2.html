@@ -21,14 +21,21 @@
  */
   /*
   修改this指向的2中方法：
-  1、箭头函数
+  2、bind()
    */
+
   class Alert extends React.Component {
 
-    handleClick = () => {
+    constructor(props) {
+      super(props);
+      this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
       console.log(this);
       alert(this.refs.left.value);
     };
+
     handleBlur = (e) => {
       alert(e.target.value);
     }
@@ -44,7 +51,7 @@
     }
   }
 
-  ReactDOM.render(<Alert />, document.getElementById('example'))
+  ReactDOM.render(<Alert/>, document.getElementById('example'))
 </script>
 </body>
 </html>

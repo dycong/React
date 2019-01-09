@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>05_components_composing</title>
+    <meta charset="UTF-8">
+    <title>05_components_composing</title>
 </head>
 <body>
 
-  <div id="example"></div>
+<div id="example"></div>
 
-  <script type="text/javascript" src="../js/react.development.js"></script>
-  <script type="text/javascript" src="../js/react-dom.development.js"></script>
-  <script type="text/javascript" src="../js/prop-types.js"></script>
-  <script type="text/javascript" src="../js/babel.min.js"></script>
-  <script type="text/babel">
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
 
-  </script>
+  class App extends React.Component {
+
+    render() {
+      return (
+        <div>
+            <h1>TODO List</h1>
+            <Add />
+            <List />
+        </div>
+      )
+    }
+  }
+
+  class Add extends React.Component {
+
+    render() {
+      return (
+        <div>
+            <input type="text"/>
+            <button>Add #</button>
+        </div>
+      )
+    }
+  }
+
+  class List extends React.Component {
+
+    render() {
+      return (
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+        </ul>
+      )
+    }
+  }
+
+  //2.渲染组件
+  ReactDOM.render(<App/>, document.getElementById('example'))
+</script>
 </body>
 </html>

@@ -21,14 +21,19 @@
   1). 如果性别没有指定, 默认为男
   2). 如果年龄没有指定, 默认为18
   */
+
+  /*
+  向组件对象传递props的2中方式
+  1、组件标签的标签属性；接收不确定的数据
+   */
   class Person extends React.Component {
-    constructor(props){
+    constructor(props) {
       super(props)
     }
 
     render() {
       // 结构赋值
-      const {name,age,sex} = this.props;
+      const {name, age, sex} = this.props;
       return (
         <ul>
           <li>姓名；{name}</li>
@@ -40,14 +45,14 @@
   }
 
   Person.propTypes = {
-    name:PropTypes.string.isRequired,
-    age:PropTypes.number,
-    sex:PropTypes.string
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number,
+    sex: PropTypes.string
   }
 
   Person.defaultProps = {
-    age:100,
-    sex:'女'
+    age: 100,
+    sex: '女'
   }
 
   const p1 = {

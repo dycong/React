@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>04_component_props</title>
+</head>
+<body>
+
+<div id="example1"></div>
+<div id="example2"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+
+  /*
+  向组件对象传递props的2中方式
+  2、组件标签体子标签；接收不确定的标签
+   */
+  class Person extends React.Component {
+
+    render() {
+      // 结构赋值
+      return (
+        <ul>
+          {this.props.children}
+        </ul>
+      )
+    }
+  }
+
+  const p1 = {
+    name: 'ding',
+    age: 18,
+    sex: '男'
+  }
+
+  ReactDOM.render(
+    (<Person>
+        <li>姓名；{p1.name}</li>
+        <li>年龄：{p1.age}</li>
+        <li>性别：{p1.sex}</li>
+      </Person>), document.getElementById('example1'))
+
+
+</script>
+</body>
+</html>
+
