@@ -11,12 +11,27 @@
 <script type="text/javascript" src="../js/react-dom.development.js"></script>
 <script type="text/javascript" src="../js/babel.min.js"></script>
 <script type="text/babel">
-  /*
-  需求: 自定义组件
-    1. 让指定的文本做显示/隐藏的动画
-    2. 切换时间为2S
-    3. 点击按钮从界面中移除组件界面
-   */
+ /*
+ 组件 生命周期
+ 1、初始化：ReactDOM.render()
+    - componentWillMount()
+    - render()
+    - componentDidMount()
+
+ 2、更新：this.setState({})
+    - componentWillUpdate()
+    - render()
+    - componentDidUpdate()
+
+ 3、死亡：ReactDOM.unmountComponentAtNode()
+    - componentWillUnmount
+
+  常用回调：
+        render():比用，用来提供界面，提供虚拟DOM，初始化和更新时都会调用
+        componentDidMount（）：在第一次render之后调用，只有1次，执行异步代码
+        componentWillMount（）：在第一次render之前调用，为第一次render提供初始数据
+        componentWillUnmount：组件被卸载前调用，只有1次
+  */
 
   class Life extends React.Component {
     state = {

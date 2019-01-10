@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>09_form2</title>
+</head>
+<body>
+<div id="example"></div>
+
+<script type="text/javascript" src="../js/react.development.js"></script>
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<script type="text/babel">
+  /*
+  需求: 自定义包含表单的组件
+    1. 界面如下所示
+    2. 输入用户名密码后, 点击登陆提示输入信息
+    3. 不提交表单
+  */
+  /*
+  手机表单信息的方式
+  2、自动收集（输入时）
+   */
+  class Form2 extends React.Component {
+    state = {
+      username: 'ddd',
+      pwd: '111',
+      username2: 'ccc',
+      pwd2: '222'
+    }
+
+    // 登录按钮1
+    login = (event) => {
+      event.preventDefault();
+      // 只需要从状态中更新
+      const {username, pwd} = this.state
+      alert(`发送ajax请求用户名为:${username} --- 密码为:${pwd}`)
+    }
+
+    // 登录按钮2
+    login2 = (event) => {
+      event.preventDefault();
+      // 只需要从状态中更新
+      const {username2, pwd2} = this.state
+      alert(`发送ajax请求用户名为:${username2} --- 密码为:${pwd2}`)
+    }
+
+    // 获取用户名1
+    handleUsernameChange = (event) => {
+      const username = event.target.value
+      this.setState({
+        username
+      })
+    }
+
+    // 获取密码1
+    handlePwdChange = (event) => {
+      const pwd = event.target.value
+      this.setState({
+        pwd
+      })
+    }
+
+    // 获取 Form2 输入信息
+    handleChange = (event, name) => {
+      const value = event.target.value;
+      this.setState({
+        [name]: value  // 对象属性名需要一个变量的值
+      })
+    }
+
+    render() {
+    const {username, pwd, username2, pwd2} = this.state
+  return (
+    <form>
+      用户名：<input value={username} onChange={this.handleUsernameChange}/>
+      密码：<input value={pwd} type="password" onChange={this.handlePwdChange}/>
+      <button onClick={this.login}>登陆</button>
+      <br/> <br/><br/> <br/>
+      用户名：<input value={username2}
+                 onChange={(event) => this.handleChange(event, 'username2')}/>
+      密码：<input value={pwd2} type="password"
+                onChange={(event) => this.handleChange(event, 'pwd2')}/>
+      <button onClick={this.login2}>登陆2</button>
+    </form>
+  )
+  }
+  }
+
+  ReactDOM.render(<Form2/>, document.getElementById('example'))
+
+</script>
+</body>
+</html>
